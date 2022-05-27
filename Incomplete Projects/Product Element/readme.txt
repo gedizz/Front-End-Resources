@@ -1,1 +1,0 @@
-Projects that are currently in progress
