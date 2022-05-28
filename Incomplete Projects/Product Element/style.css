@@ -37,6 +37,8 @@ img {
   transition: transform 1.2s;
   transform-style: preserve-3d;
   backface-visibility: hidden;
+  overflow: hidden;
+  background-color: #fff;
 }
 
 .product-card:hover {
@@ -65,13 +67,10 @@ button {
   text-align: center;
 }
 
-.overlay {
+.card-image .overlay {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
+  inset: 0 0 0 0;
+  height: 80%;
   width: 100%;
   opacity: 0;
   transition: .5s ease;
@@ -87,7 +86,8 @@ button {
   background-color: #fff;
   flex-basis: 30%;
   overflow: hidden;
-  transition: transform 0.2s;
+  transition: transform 0.4s;
+  
   
 }
 
