@@ -1,10 +1,16 @@
-const productCard = document.querySelector(".product-card");
-const infoCard = document.getElementById("card-info");
+const productCard = document.querySelector(".product-card")
+const infoCard = document.getElementById("card-info")
 const sizesColors = document.getElementById("pop-up")
+const flipButton = document.getElementById("flip-button")
+const backCard = document.querySelector(".back")
 
 productCard.addEventListener("mouseover", cardHover);
 productCard.addEventListener("mouseleave", cardReset);
+flipButton.addEventListener("click", flipCard);
 
+function flipCard() {
+    productCard.style.transform = "rotateY(180deg)";
+}
 
 
 function cardHover() {
@@ -16,8 +22,4 @@ function cardHover() {
 function cardReset() {
     infoCard.classList.remove("card-move");
     infoCard.style.overflow = "hidden";
-}
-
-function showSizesColors() {
-    
 }
