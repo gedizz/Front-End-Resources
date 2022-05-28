@@ -7,15 +7,50 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Product Card Resource</title>
+
+  <!-- Font nonsense -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sora:wght@200&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <div class="product-container">
+  <div class="product-card" id="product-card">
+      <div class="card-image">
+          <img src="images/t-shirt-blue.png">
+      </div>
 
+      <div class="card-info">
+          <div class="info-text">
+            <h1>Adidas Originals</h1>
+            <p>Men's running shirt</p>
+          </div>
+          <div class="price">
+              <p>$39</p>
+          </div>
+          <!-- The bottom part of the card that appears
+               on the hover -->
+          <div class="sizes-colors">
+            <div class="sizes">
+              <h2>Sizes</h2>
+              <h3>XS, S, M, L, XL, XXL</h3>
+            </div>
+            <div class="colors">
+              <h2>Colors</h2>
+              <div class="available_colors">
+                <div class="color"></div>
+                <div class="color"></div>
+                <div class="color"></div>
+                <div class="color"></div>
+              </div>
+            </div>
+          </div>
+      </div>
+    
   </div>
-
+<script src="js/card.js"></script>
 </body>
 
 </html>

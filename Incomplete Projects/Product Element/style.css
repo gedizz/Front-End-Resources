@@ -1,19 +1,92 @@
+:root {
+  --main-bg-color: #eaebec;
+  --green-color: #48cfad;
+  --whitesmoke: #f8f8f8;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
-.product-container {
-  background-color: black;
-  height: 200px;
-  width: 80%;
-  margin: 0 auto;
-  -webkit-transition: all 250ms;
-  transition: all 250ms;
+html {
+  background-color: var(--main-bg-color);
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Sora', sans-serif;
 }
 
-.product-container:hover {
-  -webkit-transform: rotateY(90deg);
-          transform: rotateY(90deg);
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
+
+img {
+  height: 428px;
+  width: 333px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  transition: box-shadow 300ms ease-out;
+  border: 1px solid black;
+  transition: transform 1.2s;
+  transform-style: preserve-3d;
+}
+
+.product-card:hover {
+  box-shadow: 0px 0px 10px 3px;
+  transform: rotateY(180deg);
+}
+
+.product-card .card-image {
+  flex-basis: 70%;
+  background-color: var(--whitesmoke);
+}
+
+.product-card .card-info {
+  position: relative;
+  padding: 1.75em;
+  display: grid;
+  grid-template: 
+    "product price";
+  background-color: #fff;
+  flex-basis: 30%;
+  overflow: hidden; 
+}
+
+.card-info .info-text {
+  grid-area: product;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info .info-text h1 {
+  font-size: 1.25rem;
+}
+
+.card-info .info-text p {
+  color: #393c45
+}
+
+.card-info .price {
+  position: absolute;
+  grid-area: price;
+  font-size: 1.25rem;
+  font-weight: bold;
+  right: 0;
+  color: var(--green-color);
+}
+
+.sizes-colors {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */
