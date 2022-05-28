@@ -12,7 +12,9 @@ for(const letter of text) {
   currentSpan.textContent = letter;
   currentSpan.style.color = colors[currentColor];
 
-  currentColor = (currentColor + 1) % 6;
+  if(Math.random() <= .5) {
+    currentColor = (currentColor + 1) % 6;
+  }
 
   firstH1.appendChild(currentSpan);
 }
