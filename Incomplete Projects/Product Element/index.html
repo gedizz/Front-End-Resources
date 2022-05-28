@@ -10,6 +10,7 @@
   <title>Product Card Resource</title>
 
   <!-- Font nonsense -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sora:wght@200&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@
           <img src="images/t-shirt-blue.png">
       </div>
 
-      <div class="card-info">
+      <div class="card-info" id="card-info">
           <div class="info-text">
             <h1>Adidas Originals</h1>
             <p>Men's running shirt</p>
@@ -33,18 +34,26 @@
           </div>
           <!-- The bottom part of the card that appears
                on the hover -->
-          <div class="sizes-colors">
+          <div class="sizes-colors" id="pop-up">
             <div class="sizes">
               <h2>Sizes</h2>
-              <h3>XS, S, M, L, XL, XXL</h3>
+              <p>XS, S, M, L, XL, XXL</p>
             </div>
             <div class="colors">
               <h2>Colors</h2>
-              <div class="available_colors">
-                <div class="color"></div>
-                <div class="color"></div>
-                <div class="color"></div>
-                <div class="color"></div>
+              <div class="available-colors">
+                <div class="color">
+                  <i id="blue-dot" class="fa fa-circle" aria-hidden="true"></i>
+                </div>
+                <div class="color">
+                  <i id="red-dot" class="fa fa-circle" aria-hidden="true"></i>
+                </div>
+                <div class="color">
+                  <i id="yellow-dot" class="fa fa-circle" aria-hidden="true"></i>
+                </div>
+                <div class="color">
+                  <i id="green-dot" class="fa fa-circle" aria-hidden="true"></i>
+                </div>
               </div>
             </div>
           </div>

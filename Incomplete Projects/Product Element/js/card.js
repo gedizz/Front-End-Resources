@@ -1,11 +1,23 @@
 const productCard = document.querySelector(".product-card");
-const infoCard = document.querySelector("card-info");
+const infoCard = document.getElementById("card-info");
+const sizesColors = document.getElementById("pop-up")
 
-productCard.addEventListener("mouseover", showSizesColors, cardHover);
+productCard.addEventListener("mouseover", cardHover);
+productCard.addEventListener("mouseleave", cardReset);
+
+
 
 function cardHover() {
-    // add style to card
+    console.log("hovered")
+    infoCard.classList.add("card-move");
+    infoCard.style.overflow = "visible";
     
+}
+
+function cardReset() {
+    console.log("mouse left");
+    infoCard.classList.remove("card-move");
+    infoCard.style.overflow = "hidden";
 }
 
 function showSizesColors() {
