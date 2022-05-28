@@ -8,14 +8,12 @@ productCard.addEventListener("mouseleave", cardReset);
 
 
 function cardHover() {
-    console.log("hovered")
     infoCard.classList.add("card-move");
     infoCard.style.overflow = "visible";
     
 }
 
 function cardReset() {
-    console.log("mouse left");
     infoCard.classList.remove("card-move");
     infoCard.style.overflow = "hidden";
 }

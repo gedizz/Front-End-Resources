@@ -49,6 +49,35 @@ img {
   background-color: var(--whitesmoke);
 }
 
+.product-card:hover .overlay {
+  opacity: 0.7;
+}
+
+button {
+  width: 120px;
+  height: 30px;
+}
+
+.view-details {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: var(--green-color);
+}
+
 .product-card .card-info {
   position: relative;
   padding: 1.75em;
