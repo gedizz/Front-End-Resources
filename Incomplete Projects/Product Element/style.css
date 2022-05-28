@@ -20,6 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  perspective: 1000px;
 }
 
 img {
@@ -35,11 +36,12 @@ img {
   border: 1px solid black;
   transition: transform 1.2s;
   transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .product-card:hover {
   box-shadow: 0px 0px 10px 3px;
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
 }
 
 .product-card .card-image {
