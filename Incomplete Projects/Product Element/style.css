@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.product-container {
+  background-color: black;
+  height: 200px;
+  width: 80%;
+  margin: 0 auto;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+}
+
+.product-container:hover {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+/*# sourceMappingURL=style.css.map */

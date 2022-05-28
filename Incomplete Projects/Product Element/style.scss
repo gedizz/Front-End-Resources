@@ -1,0 +1,17 @@
+$primaryColor: red;
+$secondaryColor: blue;
+$poopSpacing: 420px;
+
+* { margin: 0; padding: 0; }
+
+.product-container {
+  background-color: black;
+  height: 200px;
+  width: 80%;
+  margin: 0 auto;
+  transition: all 250ms;
+
+  &:hover {
+    transform: rotateY(90deg);
+  }
+}
