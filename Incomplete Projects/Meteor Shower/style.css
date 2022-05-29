@@ -1,0 +1,147 @@
+:root {
+  /* variables go here */
+  --animation-color-duration: 6s;
+  --animation-big-duration: 9s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("images/starry_sky.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 350px;
+  width: 350px;
+  margin: auto;
+
+  border-radius: 18px;
+
+  box-shadow: 0px 0px 50px 20px red;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  transition: transform 300ms cubic-bezier(.38, .69, .32, 1.28);
+
+  animation: cycle_shadow var(--animation-color-duration) linear infinite;
+}
+
+.card i {
+  position: absolute;
+  top: -100%;
+
+  font-size: 150px;
+  color: red;
+  text-shadow: 0px 0px 5px red;
+
+  transition: transform 300ms cubic-bezier(.38, .69, .32, 1.28);
+  animation: cycle_colors var(--animation-color-duration) linear infinite,
+    fall var(--animation-big-duration) linear infinite;
+}
+
+
+.card:hover {
+  cursor: pointer;
+  animation-play-state: paused;
+  transform: scale(1.03);
+}
+
+.card:hover i {
+  animation-play-state: paused;
+}
+
+@keyframes cycle_colors {
+  0% {
+    filter: hue-rotate(0deg) opacity 1.0;
+  }
+
+  /* red */
+  16.67% {
+    filter: hue-rotate(60deg) opacity 1;
+  }
+
+  /* orange */
+  33.33% {
+    filter: hue-rotate(120deg) opacity 1;
+  }
+
+  /* yellow */
+  50% {
+    filter: hue-rotate(180deg) opacity 1;
+  }
+
+  /* green */
+  66.67% {
+    filter: hue-rotate(240deg);
+  }
+
+  /* blue */
+  83.33% {
+    filter: hue-rotate(300deg);
+  }
+
+  /* purple */
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes cycle_shadow {
+  0% {
+    box-shadow: 0px 0px 50px 20px hsl(0, 80%, 50%);
+  }
+
+  /* red */
+  16.67% {
+    box-shadow: 0px 0px 50px 20px hsl(60, 80%, 50%);
+  }
+
+  /* orange */
+  33.33% {
+    box-shadow: 0px 0px 50px 20px hsl(120, 80%, 50%);
+  }
+
+  /* yellow */
+  50% {
+    box-shadow: 0px 0px 50px 20px hsl(180, 80%, 50%);
+  }
+
+  /* green */
+  66.67% {
+    box-shadow: 0px 0px 50px 20px hsl(240, 80%, 50%);
+  }
+
+  /* blue */
+  83.33% {
+    box-shadow: 0px 0px 50px 20px hsl(300, 80%, 50%);
+  }
+
+  /* purple */
+  100% {
+    box-shadow: 0px 0px 50px 20px hsl(360, 80%, 50%);
+  }
+}
+
+@keyframes fall {
+  from {
+    bottom: 100%;
+    right: -100%;
+  }
+
+  to {
+    top: 100%;
+    right: 100%;
+  }
+}
