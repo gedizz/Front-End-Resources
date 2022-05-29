@@ -6,6 +6,7 @@ const cardToFlip = document.querySelector(".flip-card")
 const flipButton = document.getElementById("flip-button")
 
 const imageContainer = document.querySelector(".image-container")
+const imageContainerChildren = imageContainer.children;
 
 const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
@@ -22,6 +23,30 @@ rightArrow.addEventListener("click", slideRight);
 leftArrow.addEventListener("click", slideLeft);
 
 var currentPosition = 1;
+var imageId = 1;
+
+// on page load set the ID of each image and increment by 1. 
+// first image is id=1 second image is id=2 etc
+function setImageIds() {
+    for (const image of imageContainerChildren) {
+        image.id = imageId;
+        ++imageId;
+        console.log(image.id);
+    }
+}
+
+setImageIds();
+
+
+function hideImagesNotDisplayed() {
+    for (const image of imageContainerChildren) {
+        if (image.id != currentPosition) {
+            image.style.display = "none";
+        }
+    }
+}
+
+hideImagesNotDisplayed()
 
 function slideRight() {
     if (currentPosition == 1) {
