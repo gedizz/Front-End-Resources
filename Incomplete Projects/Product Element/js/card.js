@@ -1,15 +1,16 @@
 const productCard = document.querySelector(".product-card")
 const infoCard = document.getElementById("card-info")
 const sizesColors = document.getElementById("pop-up")
+
+const cardToFlip = document.querySelector(".flip-card")
 const flipButton = document.getElementById("flip-button")
-const backCard = document.querySelector(".back")
 
 productCard.addEventListener("mouseover", cardHover);
 productCard.addEventListener("mouseleave", cardReset);
 flipButton.addEventListener("click", flipCard);
 
 function flipCard() {
-    productCard.style.transform = "rotateY(180deg)";
+    cardToFlip.style.transform = "rotateY(180deg)";
 }
 
 

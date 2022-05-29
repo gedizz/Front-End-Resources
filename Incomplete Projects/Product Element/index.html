@@ -19,25 +19,28 @@
 <body>
 
   <div class="product-card" id="product-card">
-    
-      
-      <div class="card-image">
+
+    <div class="flip-card">
+
+      <figure class="front">
+
+        <div class="card-image">
           <img src="images/t-shirt-blue.png">
           <div class="overlay">
             <button type="button" id="flip-button"><b>VIEW DETAILS</b></button>
           </div>
-      </div>
+        </div>
 
-      <div class="card-info" id="card-info">
+        <div class="card-info" id="card-info">
           <div class="info-text">
             <h1>Adidas Originals</h1>
             <p>Men's running shirt</p>
           </div>
           <div class="price">
-              <p>$39</p>
+            <p>$39</p>
           </div>
           <!-- The bottom part of the card that appears
-               on the hover -->
+                 on the hover -->
           <div class="sizes-colors" id="pop-up">
             <div class="sizes">
               <h2>Sizes</h2>
@@ -61,11 +64,19 @@
               </div>
             </div>
           </div>
-      </div>
-    
+        </div>
+      </figure>
+
+      <figure class="back">
+        <h1>backside dog</h1>
+      </figure>
+      
+    </div>
+
+
+
   </div>
-<script src="js/card.js"></script>
+  <script src="js/card.js"></script>
 </body>
 
 </html>
-

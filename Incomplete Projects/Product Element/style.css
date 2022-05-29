@@ -35,11 +35,28 @@ img {
   transition: box-shadow 300ms ease-out;
   border-radius: 18px;
   transition: transform 1.2s;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
   overflow: hidden;
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.product-card .flip-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.flip-card figure {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card .back {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(180deg);
 }
 
 .product-card:hover {
