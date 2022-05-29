@@ -10,5 +10,5 @@ function generateMeteor() {
 }
 
 function generateAnimation() {
-    
+
 }
