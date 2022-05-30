@@ -34,28 +34,29 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sora:wght@200&display=swap" rel="stylesheet">
-	
-  
-  <title>Product Page</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<title>Product Page</title>
 </head>
 
 <body>
 
 	<main>
-    <div class="left-container">
-      <div class="current-image">
-        <img id="main-image" src="">
-			</div>	
-			<div class="gallery">
-				<img src="images/beer1.jpg" alt="beer1.jpg">
-				<img src="images/beer2.jpg" alt="beer1.jpg">
-				<img src="images/beer3.jpg" alt="beer1.jpg">
-				<img src="images/beer4.jpg" alt="beer1.jpg">
+		<div class="left-container">
+			<div class="current-image">
+				<img id="main-image" src="">
 			</div>
-      
-    </div>
+			<div class="gallery">
+				<img src="images/beer1.jpg" id="beer1" alt="beer1.jpg">
+				<img src="images/beer2.jpg" id="beer2" alt="beer2.jpg">
+				<img src="images/beer3.jpg" id="beer3" alt="beer3.jpg">
+				<img src="images/beer4.jpg" id="beer4" alt="beer4.jpg">
+			</div>
 
-    <div class="right-container">
+		</div>
+
+		<div class="right-container">
 
 			<div class="product-header">
 				<p><a href="#home">Home</a>/<a href="#home">Hoppy</a>/<a href="#hoppy">OMNI Sampler Pack</a></p>
@@ -65,15 +66,15 @@
 			<div class="product-description">
 				<p>This hop sampler 3-Pack includes one crowler of each of the following:<br><br>
 
-					FAD - This is our new and improved 2nd-anniversary beer that is full of Citra, Mosaic, 
-					and Amarillo Hops. This one has an aroma that is hard to resist. This New England DIPA 
+					FAD - This is our new and improved 2nd-anniversary beer that is full of Citra, Mosaic,
+					and Amarillo Hops. This one has an aroma that is hard to resist. This New England DIPA
 					is not just a fad, it's Frickin' Awesome & Delicious!<br><br>
-					Time Machine - A throwback American IPA paying homage to the great beers of the 90's 
-					and 2000's. Traditional American ale yeast with “old school” hops of Cascade and 
+					Time Machine - A throwback American IPA paying homage to the great beers of the 90's
+					and 2000's. Traditional American ale yeast with “old school” hops of Cascade and
 					Centennial that remind us of simpler times.
 					Birdie Putt - A perfect IPA for the Links or the Clubhouse.</p>
 			</div>
-
+			<hr />
 			<div class="product-selection">
 				<h1>$36</h1>
 				<form action="#selectproduct.php" method="get">
@@ -85,13 +86,38 @@
 					</select>
 					<label id="size-label" for="sizes">Size:</label>
 				</form>
-				<button>ADD TO CART</button>
+				
 			</div>
-			
 
-    </div>
+			<div class="add-to-cart">
+				<div class="quantity">
+					<p id="quantity-down">-</p>
+					<input type="text" name="quantity" value="1" id="quantity">
+					<p id="quantity-up">+</p>
+				</div>
+				
+				<button>ADD TO CART</button>
+				
+			</div>
+
+			<div class="additional-info">
+				<h3>Additional Information</h3>
+				<table>
+					<tr>
+						<th>Brewery</th>
+						<td>OMNI Brewing Company</td>
+					</tr>
+					<tr>
+						<th>Style</th>
+						<td>Hoppy</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
 	</main>
-	
-<script src="js/script.js" defer></script>
+
+	<script src="js/script.js" defer></script>
 </body>
+
 </html>
