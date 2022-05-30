@@ -30,7 +30,7 @@ for (const image of galleryImages) {
 }
 
 function changeImage(event) {
-  newImage = event.path[0].getAttribute("src");
+  newImage = this.src;
   animationStopped = 1;
   currentImage.src = newImage;
 }

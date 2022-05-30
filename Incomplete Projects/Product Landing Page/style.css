@@ -50,6 +50,12 @@ main {
 	border: 1px solid blue;
 }
 
+.left-container {
+	position: sticky;
+	align-self: flex-start;
+
+}
+
 .right-container {
 	align-items: flex-start;
 }
@@ -195,6 +201,7 @@ main {
 	border-collapse: collapse;
 	
 }
+
 
 @media only screen and (max-width: 800px) {
 	main {
