@@ -1,0 +1,97 @@
+<!-- Layout
+
+    Grid with 2 col 1 row
+    flex in each col.
+
+    Font: Montserrat
+
+    Left: fixed position image and bottom images
+     - can navigate images by clicking image underneath OR slides every 5s
+     - pause slider if hover over image and turn off if they manually select
+
+
+    Right: put same day delivery under add to card button (?)
+
+           
+
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Lucas Geditz, Dylan Williams">
+
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Montserrat-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sora:wght@200&display=swap" rel="stylesheet">
+	
+  
+  <title>Product Page</title>
+</head>
+
+<body>
+
+	<main>
+    <div class="left-container">
+      <div class="current-image">
+        <img id="main-image" src="">
+			</div>	
+			<div class="gallery">
+				<img src="images/beer1.jpg" alt="beer1.jpg">
+				<img src="images/beer2.jpg" alt="beer1.jpg">
+				<img src="images/beer3.jpg" alt="beer1.jpg">
+				<img src="images/beer4.jpg" alt="beer1.jpg">
+			</div>
+      
+    </div>
+
+    <div class="right-container">
+
+			<div class="product-header">
+				<p><a href="#home">Home</a>/<a href="#home">Hoppy</a>/<a href="#hoppy">OMNI Sampler Pack</a></p>
+				<h1>OMNI Hop Sampler Pack</h1>
+			</div>
+
+			<div class="product-description">
+				<p>This hop sampler 3-Pack includes one crowler of each of the following:<br><br>
+
+					FAD - This is our new and improved 2nd-anniversary beer that is full of Citra, Mosaic, 
+					and Amarillo Hops. This one has an aroma that is hard to resist. This New England DIPA 
+					is not just a fad, it's Frickin' Awesome & Delicious!<br><br>
+					Time Machine - A throwback American IPA paying homage to the great beers of the 90's 
+					and 2000's. Traditional American ale yeast with “old school” hops of Cascade and 
+					Centennial that remind us of simpler times.
+					Birdie Putt - A perfect IPA for the Links or the Clubhouse.</p>
+			</div>
+
+			<div class="product-selection">
+				<h1>$36</h1>
+				<form action="#selectproduct.php" method="get">
+					<select name="sizes">
+						<option value="growler" selected="selected">Growler (64oz)</option>
+						<option value="crowler">Crowler (25.5oz)</option>
+						<option value="crowler">Pint (16oz)</option>
+						<option value="crowler">Can (12oz)</option>
+					</select>
+					<label id="size-label" for="sizes">Size:</label>
+				</form>
+				<button>ADD TO CART</button>
+			</div>
+			
+
+    </div>
+	</main>
+	
+<script src="js/script.js" defer></script>
+</body>
+</html>
