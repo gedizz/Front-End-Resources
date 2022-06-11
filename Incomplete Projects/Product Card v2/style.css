@@ -3,6 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    perspective: 1000px;
 
     background-color: lightgray;
 }
@@ -12,14 +13,14 @@ body {
     width: 350px;
     transition: all 2s;
     transform-style: preserve-3d;
-    perspective: 1000px;
 
-    border: 1px solid red;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.2);
+    
 
 }
 /* Eventually replaced with javascript*/
 .product-card:hover {
-    transform: rotateY(-180deg);
+    transform: rotateY(180deg);
 }
 
 .front, .back {
@@ -38,17 +39,30 @@ body {
     background-color: aquamarine;
 }
 
+.front .image, .description {
+    height: 100%;
+    width: 100%;
+}
+
 
 
 .front .image {
-    flex-basis: 80%;
-    outline: 1px solid orange;
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    background-color: #fff;
 
 }
 
+.image img {
+    height: 100%;
+}
+
+
+
 .front .description {
     flex-basis: 20%;
-    border: 1px solid white;
+    background-color: whitesmoke;
 }
 
 
