@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    background-color: lightgray;
+}
+
+.product-card {
+    height: 500px;
+    width: 350px;
+    transition: all 2s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    border: 1px solid red;
+
+}
+/* Eventually replaced with javascript*/
+.product-card:hover {
+    transform: rotateY(-180deg);
+}
+
+.front, .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    backface-visibility: hidden;
+}
+
+.front {
+    background-color: aquamarine;
+}
+
+
+
+.front .image {
+    flex-basis: 80%;
+    outline: 1px solid orange;
+
+}
+
+.front .description {
+    flex-basis: 20%;
+    border: 1px solid white;
+}
+
+
+
+.back {
+    background-color: aqua;
+    transform: rotateY(180deg);
+}
