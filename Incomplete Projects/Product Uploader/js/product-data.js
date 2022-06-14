@@ -39,5 +39,14 @@ function changeSection() {
     }
 }
 
+// Set all of the sections to the height of the tallest section
+for (var i = 0; i < dataChildren.length; i++) {
+    dataChildren[i].style.display = "flex"; // Set height to flex so it can gather the height
+    var firstElHeight =  dataChildren[i].clientHeight;
+    console.log("Heights:" + firstElHeight);
+    dataChildren[i].style.display = "none";
+
+}
+
 
 

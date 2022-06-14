@@ -2,11 +2,7 @@
 
 if(strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     require 'includes/conn.php';
-	if (isset($_POST['visible'])) {
-		$visible = 1;
-	} else {
-		$visible = 0;
-	}
+	$visible = isset($_POST['visible']) ? 1 : 0;
     $name = $_POST['productname'];
 	$full_desc = $_POST['desc'];
 	$short_desc = $_POST['shortdesc'];
@@ -18,11 +14,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
 	$tax_status = $_POST['taxstatus'];
 	$tax_class = $_POST['taxclass'];
 	$sku = $_POST['sku'];
-	if (isset($_POST['managestock'])) {
-		$manage_stock = 1;
-	} else {
-		$manage_stock = 0;
-	}
+	$manage_stock = isset($_POST['managestock']) ? 1: 0;
 	$stock_status = $_POST['stockstatus'];
 	$brewery = $_POST['brewery'];
 	$style = $_POST['style'];
@@ -90,6 +82,8 @@ Product Data Section:
 <body>
 
 <main>
+
+
 
 <form id="product" type="hidden" action="index.php" method="post"></form>
 
@@ -207,9 +201,33 @@ Product Data Section:
 					</div>
 				</div>
 
+				<?php 
+					require 'includes/conn.php';
+					$sql = 'SELECT * FROM attributes';
+					$statement = $pdo->prepare($sql);
+					$statement->execute();
+					$result = $statement->fetchAll();
+				?>
+
 				<!-- Needs a lot of JS and formatting-->
 				<div class="attributes">
-					attr
+					<div class="labels">
+						<p>Attributes:</p>
+					</div>
+
+					<div class="inputs">
+						<select form="product" name="attribute">
+						<?php 
+							foreach ($result as $row) {
+								echo '<option>' . $row[1] . '</option>';   // Second column
+							}
+						?>
+						</select>
+					
+
+					</div>
+					
+
 				</div>
 				<!-- Needs a lot of JS and formatting-->
 				<div class="category">
@@ -243,10 +261,29 @@ Product Data Section:
 		
 		
 	</div>
-	<script src="product-data.js"></script>
+	<script src="js/product-data.js"></script>
 
 <!-- Popups -->
+	<div class="add-media">	
+		<h1>Add Media</h1>
+		<div class="tab-bar">
+			<ul>
+				<li class="current-tab">
+					<a>Upload Files</a>	<!-- On click change tab -->
+				</li>
+				<li>
+					<a>Media Library</a> <!-- On click change tab -->
+				</li>
+			</ul>
+		</div>
+    <div class="upload-files">
+			
+		</div>
 
+		<div class="media-library">
+
+		</div>
+	</div>
 
 </main>
 

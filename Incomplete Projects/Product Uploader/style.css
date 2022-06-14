@@ -156,3 +156,23 @@ input, h1, textarea, select {
 }
 
 /* POPUPS */
+
+.add-media {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: .75em;
+}
+
+
+
+.tab-bar {
+    display: flex;
+}
+
+.tab-bar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
