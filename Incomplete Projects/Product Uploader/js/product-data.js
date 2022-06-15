@@ -39,14 +39,45 @@ function changeSection() {
     }
 }
 
-// Set all of the sections to the height of the tallest section
-for (var i = 0; i < dataChildren.length; i++) {
-    dataChildren[i].style.display = "flex"; // Set height to flex so it can gather the height
-    var firstElHeight =  dataChildren[i].clientHeight;
-    console.log("Heights:" + firstElHeight);
-    dataChildren[i].style.display = "none";
+// Gets the selected value of attribute option when add button clicked
+const attributeSelector = document.getElementById("attribute-selector");
+const attributeButton = document.getElementById("attribute-button");
 
+attributeButton.addEventListener("click", () => {
+    // Selected value from select option
+    var value = attributeSelector.options[attributeSelector.selectedIndex].value;
+    addAttribute(value);
+    
+});
+
+const attributeSection = document.querySelector(".attributes");
+const empty = document.querySelector(".empty");
+
+function addAttribute(value) {
+    if (value == 'New Attribute') {
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("new-attribute");
+        const newInput = document.createElement("input");
+        newInput.type = "text";
+        newInput.form = "add-attributes";
+        newInput.name = "newattribute";
+        newInput.placeholder = "New attribute name..."
+        
+        newDiv.appendChild(newInput);
+        attributeSection.appendChild(newDiv);
+    } else {
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("new-attribute");
+        newDiv.name = value;
+        const p = document.createElement("p");
+        p.textContent = value;
+        newDiv.appendChild(p);
+        attributeSection.appendChild(newDiv);
+    }
+    
 }
+
+
 
 
 

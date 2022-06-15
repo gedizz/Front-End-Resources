@@ -109,6 +109,7 @@ input, h1, textarea, select {
     flex-direction: column;
     flex-basis: 20%;
     border: 1px solid black;
+    height: 200px;
 }
 
 .sidebar a {
@@ -132,6 +133,7 @@ input, h1, textarea, select {
     align-items: left;
     justify-content: center;
     width: 100%;
+    min-height: 200px;
     border: 1px solid red;
 }
 
@@ -150,6 +152,41 @@ input, h1, textarea, select {
     font-size: 0.75em;
     flex-basis: 80%;
 }
+
+.attributes {
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+}
+
+/* Class for attributes input div*/
+#attribute-add {
+    display: flex;
+    align-items: center;
+    border: 1px solid green;
+}
+
+.new-attribute {
+    width: 100%;
+    height: 65px;
+    margin: 2px 0px 2px 0;
+
+    font-size: 1.25em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+    background-color: #fff;
+
+}
+
+.new-attribute input {
+    font-size: 0.75em;
+    
+}
+
 
 .active {
     background-color: lightgray;

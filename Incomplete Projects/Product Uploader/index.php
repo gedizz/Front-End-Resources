@@ -209,27 +209,46 @@ Product Data Section:
 					$result = $statement->fetchAll();
 				?>
 
-				<!-- Needs a lot of JS and formatting-->
-				<div class="attributes">
-					<div class="labels">
-						<p>Attributes:</p>
-					</div>
+				
+				
+				<!--
 
-					<div class="inputs">
-						<select form="product" name="attribute">
+				===Attributes Layout===
+				Select Option:
+					- Data from db populates
+				Add Button:
+					- If new attribute is selected it makes a new section with input
+					- Otherwise it adds the same formatted section but instead has the name
+				Attribute Sections:
+					- Displays the name of the attribute. 
+				Save Attributes Button:
+					- Saves the displayed attributes for the product id in a product-attr table
+						- Posts to hidden iframe/form so as to not refresh page completely
+
+			
+			
+			
+				-->
+				<div class="attributes">
+				<!-- Hidden iframe and form for submitting and not reloading page -->
+				<form id="add-attributes" action="#add-attribute.php" target="hiddenframe" type="hidden"></form>
+				<iframe name="hiddenframe" id="hiddenframe" style="display: none;"></iframe>
+
+					<div id="attribute-add">
+						<select id="attribute-selector" form="product" name="attribute">
+							<option selected="selected">New Attribute</option>
 						<?php 
 							foreach ($result as $row) {
 								echo '<option>' . $row[1] . '</option>';   // Second column
 							}
 						?>
 						</select>
-					
-
+						<button id="attribute-button"style="font-size: 1.5em;" form="add-attributes">Add</button>
 					</div>
-					
 
 				</div>
-				<!-- Needs a lot of JS and formatting-->
+
+
 				<div class="category">
 					cat
 				</div>
