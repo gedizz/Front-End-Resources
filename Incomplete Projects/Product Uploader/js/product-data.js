@@ -62,17 +62,21 @@ function addAttribute(value) {
         newInput.form = "add-attributes";
         newInput.name = "newattribute";
         newInput.placeholder = "New attribute name..."
-        
         newDiv.appendChild(newInput);
         attributeSection.appendChild(newDiv);
     } else {
-        const newDiv = document.createElement("div");
-        newDiv.classList.add("new-attribute");
-        newDiv.name = value;
-        const p = document.createElement("p");
-        p.textContent = value;
-        newDiv.appendChild(p);
-        attributeSection.appendChild(newDiv);
+        let child = attributeSection.querySelector('div[id="' + value + '"]')
+        // If child already exists with same ID then don't add a new one
+        if (!child) {
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("new-attribute");
+            newDiv.id = value;
+            const p = document.createElement("p");
+            p.textContent = value;
+            newDiv.appendChild(p);
+            attributeSection.appendChild(newDiv);
+        }
+        
     }
     
 }
