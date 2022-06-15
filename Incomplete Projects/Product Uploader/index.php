@@ -21,9 +21,12 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
 	$abv = $_POST['abv'];
 	$ibu = $_POST['ibu'];
 
+	$attribute_array = array("one", "two", "three", "four");
+	$serailzied_attribute_array = serialize($attribute_array);
 
-    $sql = 'INSERT INTO product_info (visibility, name, full_desc, short_desc, seo_title, seo_slug, seo_meta_desc, price, sale_price, tax_status, tax_class, sku, stock_managed, stock_status, brewery, style, abv, ibu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    $statement = $pdo->prepare($sql)->execute([$visible, $name, $full_desc, $short_desc, $seo_title, $seo_slug, $meta_desc, $price, $sale_price, $tax_status, $tax_class, $sku, $manage_stock, $stock_status, $brewery, $style, $abv, $ibu]);
+
+    $sql = 'INSERT INTO product_info (visibility, name, full_desc, short_desc, seo_title, seo_slug, seo_meta_desc, price, sale_price, tax_status, tax_class, sku, stock_managed, stock_status, attributes, brewery, style, abv, ibu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    $statement = $pdo->prepare($sql)->execute([$visible, $name, $full_desc, $short_desc, $seo_title, $seo_slug, $meta_desc, $price, $sale_price, $tax_status, $tax_class, $sku, $manage_stock, $stock_status, $serialized_attribute_array, $brewery, $style, $abv, $ibu]);
 
 }
 
@@ -223,15 +226,12 @@ Product Data Section:
 					- Displays the name of the attribute. 
 				Save Attributes Button:
 					- Saves the displayed attributes for the product id in a product-attr table
-						- Posts to hidden iframe/form so as to not refresh page completely
-
-			
-			
+						- Posts to hidden iframe/form so as to not refresh page
 			
 				-->
 				<div class="attributes">
 				<!-- Hidden iframe and form for submitting and not reloading page -->
-				<form id="add-attributes" action="#add-attribute.php" target="hiddenframe" type="hidden"></form>
+				<form id="add-attributes" action="includes/add-attributes.php" type="hidden" method="get"></form>
 				<iframe name="hiddenframe" id="hiddenframe" style="display: none;"></iframe>
 
 					<div id="attribute-add">
@@ -243,8 +243,8 @@ Product Data Section:
 							}
 						?>
 						</select>
-						<button id="attribute-add"style="font-size: 1.5em;">Add</button>
-						<button id="attribute-save"style="font-size: 1.5em;" form="add-attributes">Save</button>
+						<button id="attribute-add-button"style="font-size: 1.5em;">Add</button>
+						<button id="attribute-save-button"style="font-size: 1.5em;" form="add-attributes">Save</button>
 					</div>
 
 				</div>

@@ -43,18 +43,23 @@ function changeSection() {
 
 // Gets the selected value of attribute option when add button clicked
 const attributeSelector = document.getElementById("attribute-selector");
-const attributeButton = document.getElementById("attribute-button");
+const attributeButton = document.getElementById("attribute-add-button");
 
-attributeButton.addEventListener("click", () => {
-    // Selected value from select option
-    var value = attributeSelector.options[attributeSelector.selectedIndex].value;
-    addAttribute(value);
-    
-});
+if (attributeButton) {
+    attributeButton.addEventListener("click", () => {
+        // Selected value from select option
+        var value = attributeSelector.options[attributeSelector.selectedIndex].value;
+        addAttribute(value);
+        
+    });
+}
+
 
 const attributeSection = document.querySelector(".attributes");
 const empty = document.querySelector(".empty");
 
+numNewAttributes = 0;
+// Appends attribute child to attribute-add div
 function addAttribute(value) {
     // Create new attributes
     if (value == 'New Attribute') {
@@ -67,8 +72,9 @@ function addAttribute(value) {
 
         const newInput = document.createElement("input");
         newInput.type = "text";
-        newInput.form = "add-attributes";
-        newInput.name = "newattribute";
+        newInput.setAttribute("form", "add-attributes");
+        newInput.name = numNewAttributes;
+        numNewAttributes++;
         newInput.placeholder = "New attribute name..."
 
         newDiv.appendChild(newInput);
