@@ -168,6 +168,8 @@ input, h1, textarea, select {
 }
 
 .new-attribute {
+    position: relative;
+    z-index: 998;
     width: 100%;
     height: 65px;
     margin: 2px 0px 2px 0;
@@ -182,6 +184,16 @@ input, h1, textarea, select {
 
 }
 
+.exit {
+    position: absolute;
+    z-index: 999;
+    top: 22.5px;
+    right: 10px;
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: red;
+    
+}
 .new-attribute input {
     font-size: 0.75em;
     

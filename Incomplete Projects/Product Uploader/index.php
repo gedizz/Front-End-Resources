@@ -243,7 +243,8 @@ Product Data Section:
 							}
 						?>
 						</select>
-						<button id="attribute-button"style="font-size: 1.5em;" form="add-attributes">Add</button>
+						<button id="attribute-add"style="font-size: 1.5em;">Add</button>
+						<button id="attribute-save"style="font-size: 1.5em;" form="add-attributes">Save</button>
 					</div>
 
 				</div>
