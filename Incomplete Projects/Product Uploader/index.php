@@ -25,7 +25,8 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
 	$attribute_array = $_POST['attributes'];
 	// Decodes JSON array object
 	$attribute_array_JSON = json_decode($attribute_array);
-	// Serializes for DB to be unserialized and used later for product information
+	// Serializes for DB
+	// Should be stored into BLOB in SQL
 	$serialized_attribute_array = serialize($attribute_array_JSON);
 
     $sql = 'INSERT INTO product_info (visibility, name, full_desc, short_desc, seo_title, seo_slug, seo_meta_desc, price, sale_price, tax_status, tax_class, sku, stock_managed, stock_status, attributes, brewery, style, abv, ibu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
