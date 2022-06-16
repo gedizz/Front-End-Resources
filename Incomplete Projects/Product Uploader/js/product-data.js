@@ -3,8 +3,6 @@ const dataChildren = dataContainer.children;
 
 const sidebar = document.querySelector(".sidebar");
 const sidebarChildren = sidebar.children;
-// Array that stores all exit buttons on attributes
-const allExitButtons = [];
 
 // Display the first tab in the sidebar of Product Data Section
 for (var i = 0; i < sidebarChildren.length; i++) {
@@ -108,7 +106,7 @@ function addAttribute(value) {
             newDiv.appendChild(exitButton);
             attributeSection.appendChild(newDiv);
 
-            // Exit buttons for attributes
+            // Exit buttons for attribute sections
             exitButton.addEventListener("click", () => {
                 console.log("Exit clicked");
                 attributeSection.removeChild(newDiv);
@@ -118,6 +116,65 @@ function addAttribute(value) {
         
     }
     
+}
+
+/*
+===Attribute Saving===
+On Publish:
+    - Javascript recognizes click and creates an array of attribute values
+    - PHP accepts the array and serializes to send to DB
+
+*/
+const arrayPosted = ["1", "2", "3"];
+const publishButton = document.querySelector("#publish");
+publishButton.addEventListener("click", attributesToArray);
+const productForm = document.querySelector("#product");
+const displayedAttributes = attributeSection.children;
+
+function attributesToArray() {
+    const attributeValueArray = [];
+    console.log(displayedAttributes.length);
+    for (var i = 0; i < displayedAttributes.length; i++) {
+        if (displayedAttributes[i].id != "attribute-add" && displayedAttributes[i].nodeName == "DIV") {
+            const divChildren = displayedAttributes[i].children;
+            console.log("Attribute child");
+            for (var j = 0; j < divChildren.length; j++) {
+                // Attribute was predefined and is <p> so append the textContent
+                if (divChildren[j].nodeName == "P") {
+                    //console.log("IF: " + divChildren[j].textContent);
+                    attributeValueArray.push(divChildren[j].textContent);
+                // Attribute is new and is an input so append the value
+                } else if (divChildren[j].nodeName != "A" && divChildren[j].nodeName == "INPUT") {
+                    //console.log("ELSE: " + divChildren[j].value);
+                    attributeValueArray.push(divChildren[j].value);
+                }
+            }
+        }
+    } 
+    // if exists only update
+    let existingInputArray = attributeSection.querySelector('input[id="array-to-post"]')
+    if (!existingInputArray) {
+        const newInputArray = document.createElement("input");
+        newInputArray.type = "hidden";
+        newInputArray.setAttribute("form", "product");
+        newInputArray.name = "attributes";
+        newInputArray.id = "array-to-post"
+        // Formats the array to be able to post to PHP
+        var serializedArray = JSON.stringify(attributeValueArray);
+        newInputArray.value = serializedArray;
+        attributeSection.appendChild(newInputArray);
+    } else {
+        const newInputArray = existingInputArray;
+       // Formats the array to be able to post to PHP
+        var serializedArray = JSON.stringify(attributeValueArray);
+        newInputArray.value = serializedArray;
+        attributeSection.appendChild(newInputArray);
+    }
+    
+
+    productForm.submit();
+    console.log(attributeValueArray);
+
 }
 
 

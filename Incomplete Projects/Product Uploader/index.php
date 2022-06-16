@@ -21,9 +21,12 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
 	$abv = $_POST['abv'];
 	$ibu = $_POST['ibu'];
 
-	$attribute_array = array("one", "two", "three", "four");
-	$serailzied_attribute_array = serialize($attribute_array);
-
+	// Receives JSON encoded array object
+	$attribute_array = $_POST['attributes'];
+	// Decodes JSON array object
+	$attribute_array_JSON = json_decode($attribute_array);
+	// Serializes for DB to be unserialized and used later for product information
+	$serialized_attribute_array = serialize($attribute_array_JSON);
 
     $sql = 'INSERT INTO product_info (visibility, name, full_desc, short_desc, seo_title, seo_slug, seo_meta_desc, price, sale_price, tax_status, tax_class, sku, stock_managed, stock_status, attributes, brewery, style, abv, ibu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     $statement = $pdo->prepare($sql)->execute([$visible, $name, $full_desc, $short_desc, $seo_title, $seo_slug, $meta_desc, $price, $sale_price, $tax_status, $tax_class, $sku, $manage_stock, $stock_status, $serialized_attribute_array, $brewery, $style, $abv, $ibu]);
@@ -95,7 +98,7 @@ Product Data Section:
 			<h1>Product Information</h1>
 		</div>
 		<div class="product-header">
-			<button form="product" type="submit" id="publish">Publish</button>
+			<button id="publish">Publish</button>
 			<h1>Add new product</h1>
 			<button>Add Media</button>
 			<label for="visible">Product Visible</label>
@@ -121,30 +124,6 @@ Product Data Section:
 		<textarea form="product" type="textarea" name="metadesc" placeholder="Meta description here..." rows="15"></textarea>
 	</div>
 
-	<!-- 
-	Product Data Section:
-    - General:
-        - Regular price
-        - sale price
-        - tax status
-        - tax class
-    - Inventory:
-        - SKU
-        - Manage stock y/n
-    - Attributes:
-        - Add size, color, etc to product
-    - Categories:
-        - Add new category
-        - Select from current
-    - Additional Information:
-        - Brewery/Cidery
-        - Style
-        - ABV
-        - IBU
-
-
-	-->
-
 	<div class="product-data">
 
 		<div class="section-header">
@@ -161,7 +140,6 @@ Product Data Section:
 			</div>
 
 			<div class="data">
-
 				<div class="general">
 					<div class="labels">
 						<p>Regular price ($)</p>
@@ -184,6 +162,7 @@ Product Data Section:
 						</select>
 					</div>
 				</div>
+
 				<div class="inventory">
 				<div class="labels">
 						<p>SKU</p>
@@ -204,6 +183,7 @@ Product Data Section:
 					</div>
 				</div>
 
+				<div class="attributes">
 				<?php 
 					require 'includes/conn.php';
 					$sql = 'SELECT * FROM attributes';
@@ -211,31 +191,12 @@ Product Data Section:
 					$statement->execute();
 					$result = $statement->fetchAll();
 				?>
-
-				
-				
-				<!--
-
-				===Attributes Layout===
-				Select Option:
-					- Data from db populates
-				Add Button:
-					- If new attribute is selected it makes a new section with input
-					- Otherwise it adds the same formatted section but instead has the name
-				Attribute Sections:
-					- Displays the name of the attribute. 
-				Save Attributes Button:
-					- Saves the displayed attributes for the product id in a product-attr table
-						- Posts to hidden iframe/form so as to not refresh page
-			
-				-->
-				<div class="attributes">
 				<!-- Hidden iframe and form for submitting and not reloading page -->
 				<form id="add-attributes" action="includes/add-attributes.php" type="hidden" method="get"></form>
 				<iframe name="hiddenframe" id="hiddenframe" style="display: none;"></iframe>
 
 					<div id="attribute-add">
-						<select id="attribute-selector" form="product" name="attribute">
+						<select id="attribute-selector" name="attribute">
 							<option selected="selected">New Attribute</option>
 						<?php 
 							foreach ($result as $row) {
@@ -248,18 +209,18 @@ Product Data Section:
 					</div>
 
 				</div>
-
+					<!-- 
+					- Categories:
+						- Add new category
+						- Select from current
+						- parents and children displayed in dropdown
+							- unsure of relationship on page. need to brainstorm
+					-->
 
 				<div class="category">
 					cat
 				</div>
-				<!-- 
-				- Additional Information:
-					- Brewery/Cidery
-					- Style
-					- ABV
-					- IBU
-				-->
+
 				<div class="additional-information">
 					<div class="labels">
 						<p>Brewery/Cidery</p>
@@ -274,12 +235,8 @@ Product Data Section:
 						<input form="product" type="text" name="ibu" placeholder="IBU...">
 					</div>
 				</div>
-
 			</div>
-		</div>
-
-		
-		
+		</div>	
 	</div>
 	<script src="js/product-data.js"></script>
 

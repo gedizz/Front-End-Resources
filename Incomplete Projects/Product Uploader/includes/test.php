@@ -1,6 +1,6 @@
 <?php 
 
-$id = 17;
+$id = 42;
 require 'conn.php';
 $sql = 'SELECT attributes FROM product_info WHERE id = ?';
 $statement = $pdo->prepare($sql);

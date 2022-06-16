@@ -29,12 +29,6 @@ On Publish:
     - Javascript recognizes click and creates an array of attribute values
     - PHP accepts the array and serializes to send to DB
 
- 
- 
-
-
-
-
 */
 
 
