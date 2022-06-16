@@ -1,14 +1,12 @@
-const dataContainer = document.querySelector(".data");
-const dataChildren = dataContainer.children;
-
-const sidebar = document.querySelector(".sidebar");
-const sidebarChildren = sidebar.children;
+const dataChildren = document.querySelector(".data").children;
+const sidebarChildren = document.querySelector(".sidebar").children;
 
 // Display the first tab in the sidebar of Product Data Section
 for (var i = 0; i < sidebarChildren.length; i++) {
     if (sidebarChildren[i].classList.contains("active")) {
-        const currentActiveID = sidebarChildren[i].id;
+        const currentActiveID = sidebarChildren[i].id; // ID of sidebar a tag with current active class
         for (var i = 0; i < dataChildren.length; i++) {
+            // Class name of data section matches the ID of the correlating sidebar a tag
             if (!dataChildren[i].classList.contains(currentActiveID)) {
                 dataChildren[i].style.display = "none";
             }
@@ -16,7 +14,7 @@ for (var i = 0; i < sidebarChildren.length; i++) {
     }
 }
 
-// Add event listeners for all of the sidebar links
+
 for (var i = 0; i < sidebarChildren.length; i++) {
     sidebarChildren[i].addEventListener("click", changeSection);
 }
@@ -43,14 +41,14 @@ function changeSection() {
 const attributeSelector = document.getElementById("attribute-selector");
 const attributeButton = document.getElementById("attribute-add-button");
 
-if (attributeButton) {
-    attributeButton.addEventListener("click", () => {
-        // Selected value from select option
-        var value = attributeSelector.options[attributeSelector.selectedIndex].value;
-        addAttribute(value);
+
+attributeButton.addEventListener("click", () => {
+    // Selected value from select option
+    var value = attributeSelector.options[attributeSelector.selectedIndex].value;
+    addAttribute(value);
         
-    });
-}
+});
+
 
 
 const attributeSection = document.querySelector(".attributes");
@@ -61,46 +59,45 @@ numNewAttributes = 0;
 function addAttribute(value) {
     // Create new attributes
     if (value == 'New Attribute') {
-        const newDiv = document.createElement("div");
+        const newDiv = document.createElement("div"); // new attribute div
         newDiv.classList.add("new-attribute");
 
-        const exitButton = document.createElement("a");
+        const exitButton = document.createElement("a"); // exit button
         exitButton.textContent = "X";
         exitButton.classList.add("exit");
 
-        const newInput = document.createElement("input");
+        const newInput = document.createElement("input"); //new attribute input form
         newInput.type = "text";
         newInput.setAttribute("form", "add-attributes");
-        newInput.name = numNewAttributes;
+        newInput.name = numNewAttributes; // input name increments everytime one is added
         numNewAttributes++;
         newInput.placeholder = "New attribute name..."
 
         newDiv.appendChild(newInput);
         newDiv.appendChild(exitButton);
-        attributeSection.appendChild(newDiv);
+        attributeSection.appendChild(newDiv); // add the new div with its children to attributeSection
 
          // Exit buttons for attributes
-         exitButton.addEventListener("click", () => {
-            console.log("Exit clicked");
+        exitButton.addEventListener("click", () => {
             attributeSection.removeChild(newDiv);
-    
         });
+
     // Attributes that already exists
     } else {
         let child = attributeSection.querySelector('div[id="' + value + '"]')
         // If child already exists with same ID then don't add a new one
-        if (!child) {
-            const newDiv = document.createElement("div");
-            const p = document.createElement("p");
-            const exitButton = document.createElement("a");
+        if (!child) { 
+            const newDiv = document.createElement("div"); // new div
+            const p = document.createElement("p");        // attribute name
+            const exitButton = document.createElement("a"); // exit button
 
             newDiv.classList.add("new-attribute");
-            newDiv.id = value;
+            newDiv.id = value; // the id of the new div is equal to value 
 
             exitButton.textContent = "X";
             exitButton.classList.add("exit");
         
-            p.textContent = value;
+            p.textContent = value; // Dropdown selected value
            
             newDiv.appendChild(p);
             newDiv.appendChild(exitButton);
@@ -108,7 +105,6 @@ function addAttribute(value) {
 
             // Exit buttons for attribute sections
             exitButton.addEventListener("click", () => {
-                console.log("Exit clicked");
                 attributeSection.removeChild(newDiv);
         
             });
@@ -125,7 +121,6 @@ On Publish:
     - PHP accepts the array and serializes to send to DB
 
 */
-const arrayPosted = ["1", "2", "3"];
 const publishButton = document.querySelector("#publish");
 publishButton.addEventListener("click", attributesToArray);
 const productForm = document.querySelector("#product");
@@ -133,19 +128,16 @@ const displayedAttributes = attributeSection.children;
 
 function attributesToArray() {
     const attributeValueArray = [];
-    console.log(displayedAttributes.length);
     for (var i = 0; i < displayedAttributes.length; i++) {
+        // child of attribute section is a div and isn't the one already marked up
         if (displayedAttributes[i].id != "attribute-add" && displayedAttributes[i].nodeName == "DIV") {
-            const divChildren = displayedAttributes[i].children;
-            console.log("Attribute child");
+            const divChildren = displayedAttributes[i].children; 
             for (var j = 0; j < divChildren.length; j++) {
                 // Attribute was predefined and is <p> so append the textContent
                 if (divChildren[j].nodeName == "P") {
-                    //console.log("IF: " + divChildren[j].textContent);
                     attributeValueArray.push(divChildren[j].textContent);
                 // Attribute is new and is an input so append the value
                 } else if (divChildren[j].nodeName != "A" && divChildren[j].nodeName == "INPUT") {
-                    //console.log("ELSE: " + divChildren[j].value);
                     attributeValueArray.push(divChildren[j].value);
                 }
             }
@@ -171,9 +163,8 @@ function attributesToArray() {
         attributeSection.appendChild(newInputArray);
     }
     
-
+    // Submit the form to index.php since we've now run our JS prior
     productForm.submit();
-    console.log(attributeValueArray);
 
 }
 
