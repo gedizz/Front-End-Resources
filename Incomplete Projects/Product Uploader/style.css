@@ -207,10 +207,71 @@ input, h1, textarea, select {
 /* POPUPS */
 
 .add-media {
-    display: flex;
+    display: none;
     flex-direction: column;
-    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90vh;
     padding: .75em;
+
+    background-color: whitesmoke;
+    
+}
+
+.add-media #media-exit {
+    position: absolute;
+    font-size: 1.5em;
+    top: 0;
+    right: 10px;
+    color: red;
+    cursor: pointer;
+}
+
+.add-media .single-tab {
+    display: flex;
+    flex-basis: 95%;
+    
+    background-color: #fff;
+    border: 1px solid blue;
+}
+
+.add-media .upload-files {
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.add-media .upload-files input {
+    display: none;
+}
+
+.add-media .upload-files #submit-upload {
+    display: block;
+}
+
+.add-media .upload-files .upload-queue {
+    border: 1px solid green;
+
+}
+
+#upload-button {
+    font-size: 5em;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#upload-button:hover {
+    opacity: 1.0;
+}
+
+.add-media .media-library {
+    display: none;
 }
 
 
@@ -224,4 +285,10 @@ input, h1, textarea, select {
     display: flex;
     margin: 0;
     padding: 0;
+}
+
+.tab-bar li {
+    border: 1px solid black;
+    margin: 2px;
+    cursor: pointer;
 }

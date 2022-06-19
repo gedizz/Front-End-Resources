@@ -45,6 +45,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Product Uploader</title>
 </head>
 
@@ -101,7 +102,7 @@ Product Data Section:
 		<div class="product-header">
 			<button id="publish">Publish</button>
 			<h1>Add new product</h1>
-			<button>Add Media</button>
+			<button id="add-media-button">Add Media</button>
 			<label for="visible">Product Visible</label>
 			<input form="product" type="checkbox" name="visible" id="visible" checked="checked">
 			
@@ -244,22 +245,31 @@ Product Data Section:
 <!-- Popups -->
 	<div class="add-media">	
 		<h1>Add Media</h1>
+		<p id="media-exit">X</p>
 		<div class="tab-bar">
 			<ul>
-				<li class="current-tab">
-					<a>Upload Files</a>	<!-- On click change tab -->
+				<li>
+					<a id="upload-tab-button" class="active">Upload Files</a>	<!-- On click change tab -->
 				</li>
 				<li>
-					<a>Media Library</a> <!-- On click change tab -->
+					<a id="library-tab-button">Media Library</a> <!-- On click change tab -->
 				</li>
 			</ul>
 		</div>
-    <div class="upload-files">
-			
+
+		<form id="image-upload" type="hidden" enctype="multipart/form-data" action="includes/upload-image.php" method="post"></form>
+
+    	<div class="single-tab upload-files">
+			<i class="fa fa-upload" id="upload-button" aria-hidden="true"></i>
+			<input type="file" id="fileToUpload" name="fileToUpload" form="image-upload">
+			<div class="upload-queue">
+
+			</div>
+			<input form ="image-upload" id="submit-upload" type="submit" value="Upload Image" name="submit">
 		</div>
-
-		<div class="media-library">
-
+			
+		<div class="single-tab media-library">
+			<p>media</p>				
 		</div>
 	</div>
 
@@ -267,6 +277,6 @@ Product Data Section:
 
 
 	
-    
+<script src="js/add-media.js"></script>
 </body>
 </html>
