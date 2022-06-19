@@ -260,6 +260,7 @@ input, h1, textarea, select {
 
 }
 
+
 #upload-button {
     font-size: 5em;
     cursor: pointer;
@@ -272,6 +273,11 @@ input, h1, textarea, select {
 
 .add-media .media-library {
     display: none;
+}
+
+.add-media .media-library .media-image {
+    height: 200px;
+    width: 200px;
 }
 
 
