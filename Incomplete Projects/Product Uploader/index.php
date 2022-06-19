@@ -269,7 +269,29 @@ Product Data Section:
 		</div>
 			
 		<div class="single-tab media-library">
-			<p>media</p>				
+			<p>media</p>
+			<script>
+				<?php
+					$path = "C:/xampp/htdocs/Front-End-Resources/Incomplete Projects/Product Uploader/uploads/";
+					$files = array_diff(scandir($path), array('.', '..'));
+					
+					$image_array = array();
+					foreach ($files as $image) {
+						array_push($image_array, $image);
+					}
+					$js_array = json_encode($image_array);
+					echo "var imageArray = ". $js_array . ";\n";
+				?>
+				console.log(imageArray);
+				const mediaLibrary = document.querySelector(".media-library");
+				// Make new img element for each image name in array
+				for (const image of imageArray) {
+					newImage = document.createElement("img");
+					newImage.src = 'uploads/' + image;
+					newImage.classList.add("media-image");
+					mediaLibrary.appendChild(newImage);
+				}
+			</script>			
 		</div>
 	</div>
 
